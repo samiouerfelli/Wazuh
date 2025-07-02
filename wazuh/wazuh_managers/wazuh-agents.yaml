@@ -93,7 +93,14 @@ spec:
         - mountPath: /host/var/log
           name: log
           readOnly: true
+        - mountPath: /var/run/cilium/tetragon
+          name: tetragon-log
+          readOnly: true
+        
       volumes:
+      - name: tetragon-log
+        hostPath:
+          path: /var/run/cilium/tetragon
       - name: docker-socket-mount
         hostPath:
           path: /var/run/docker.sock
